@@ -1,18 +1,23 @@
 import { useState } from "react";
 
-const AddTaskModel = ({ onSave }) => {
-  const [task, setTask] = useState({
-    id: crypto.randomUUID(),
-    title: "",
-    description: "",
-    tags: [],
-    priority: "",
-    isFavourite: false,
-  });
+const AddTaskModel = ({ onSave, taskToUpdate, onCloseClick }) => {
+  const [task, setTask] = useState(
+    taskToUpdate || {
+      id: crypto.randomUUID(),
+      title: "",
+      description: "",
+      tags: [],
+      priority: "",
+      isFavourite: false,
+    }
+  );
+
+  const [isAdd, setIsAdd] = useState(Object.is(taskToUpdate, null));
 
   function handleChange(event) {
     //notice one thing, in each input field the name of the input field is kept same as the corresponding key in the task object. The benefit can be seen in the code below, we don't have to reset all of the keys of the task object each time. Rather only change the key whose value is updated.
     //though i don't know right now why this dynamic approach is taken. Why couldn't we set the task only when the 'add' button is clicked and add to the main task list directly at one go.
+    //another benefit arised when adding the edit feature. If value is equal to task.title then that value comes from the task object. Also, Now I've gotten the answer to why the dynamic approach is taken. Because, if we updated the task object only when the add button is clicked, then we had no reason to use the 'value' attribute in every input field. karon, directly e.target.value diye e task object e data store kora jai. value attribute use kora e jabe na. R value attribute na rakhle, edit er somoy existing data show o korbe na. Tai, edit feature rakhte gele, value attriute lagbe e. R value attribute rakhle, state onChange e update korte e hobe.
 
     const name = event.target.name;
     let value = event.target.value;
@@ -28,7 +33,7 @@ const AddTaskModel = ({ onSave }) => {
         onSubmit={() => event.preventDefault()}
       >
         <h2 className="mb-9 text-center text-2xl font-bold text-white lg:mb-11 lg:text-[28px]">
-          Add New Task
+          {isAdd ? "Add New Task" : "Edit Task"}
         </h2>
 
         <div className="space-y-9 text-white lg:space-y-10">
@@ -87,13 +92,20 @@ const AddTaskModel = ({ onSave }) => {
             </div>
           </div>
         </div>
-        <div className="mt-16 flex justify-center lg:mt-20">
+        <div className="mt-16 flex justify-between lg:mt-20">
+          <button
+            type="submit"
+            className="rounded bg-red-600 px-4 py-2 text-white transition-all hover:opacity-80"
+            onClick={onCloseClick}
+          >
+            Close
+          </button>
           <button
             type="submit"
             className="rounded bg-blue-600 px-4 py-2 text-white transition-all hover:opacity-80"
-            onClick={() => onSave(task)}
+            onClick={() => onSave(task, isAdd)}
           >
-            Create new Task
+            Save Task
           </button>
         </div>
       </form>

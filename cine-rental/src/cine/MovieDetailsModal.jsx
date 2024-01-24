@@ -1,5 +1,3 @@
-import { useContext } from "react";
-import { movieContext } from "../context";
 import { getImgURL } from "../utils/cine-utility";
 
 <link
@@ -8,8 +6,6 @@ import { getImgURL } from "../utils/cine-utility";
 />;
 
 const MovieDetailsModal = ({ movie, onClose, onCartAdd }) => {
-  const { cartData, setCartData } = useContext(movieContext);
-
   return (
     <div className="fixed top-0 left-0 w-screen h-screen z-50 bg-black/60 backdrop-blur-sm dark:bg-body bg-white font-[Sora] dark:text-white text-dark">
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[420px] sm:max-w-[600px] lg:max-w-[984px] p-4 max-h-[90vh] overflow-auto">

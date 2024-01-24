@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* tailwind.config.js e bolechi j darkmode class diye control korbo. sejonno ekhane darkmode er class ta declare korchi. */
+.dark {
+  @apply bg-[#171923] text-white;
+}

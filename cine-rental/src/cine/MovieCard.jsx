@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+import { toast } from "react-toastify";
 import tag from "../assets/tag.svg";
 import { movieContext } from "../context";
 import { getImgURL } from "../utils/cine-utility";
@@ -9,7 +10,7 @@ export default function MovieCard({ movie }) {
   const [showModal, setShowModal] = useState(false);
   const [selectedMovie, setSelectedMovie] = useState(null);
 
-  const { cartData, setCartData } = useContext(movieContext);
+  const { state, dispatch } = useContext(movieContext);
 
   function handleModalClose() {
     setSelectedMovie(null);
@@ -23,8 +24,24 @@ export default function MovieCard({ movie }) {
 
   function handleAddToCart(e) {
     e.stopPropagation();
-    const found = cartData.find((item) => item.id === movie.id);
-    !found && setCartData([...cartData, movie]);
+    const found = state.cartData.find((item) => item.id === movie.id);
+    // !found && setCartData([...state.cartData, movie]);
+    //use action instead of setCartData
+    if (!found) {
+      dispatch({
+        type: "add-to-cart",
+        payload: {
+          ...movie,
+        },
+      });
+      toast.success(`Movie ${movie.title} added successfully`, {
+        position: "bottom-right",
+      });
+    } else {
+      toast.error(`This Movie has been added to the cart already`, {
+        position: "bottom-right",
+      });
+    }
   }
 
   return (

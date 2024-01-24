@@ -1,15 +1,27 @@
 import { useContext } from "react";
+import { toast } from "react-toastify";
 import deleteIcon from "../assets/delete.svg";
 import checkout from "../assets/icons/checkout.svg";
 import { movieContext } from "../context";
 import { getImgURL } from "../utils/cine-utility";
 
 export default function CartDetails({ onClose }) {
-  const { cartData, setCartData } = useContext(movieContext);
+  // const { cartData, setCartData } = useContext(movieContext);
+  const { state, dispatch } = useContext(movieContext);
 
-  function handleDelete(itemId) {
-    const newCartData = cartData.filter((item) => item.id !== itemId);
-    setCartData([...newCartData]);
+  // function handleDelete(itemId) {
+  //   const newCartData = state.cartData.filter((item) => item.id !== itemId);
+  //   setCartData([...newCartData]);
+  // }
+
+  function handleDelete(item) {
+    dispatch({
+      type: "remove-from-cart",
+      payload: item,
+    });
+    toast.success(`Removed ${item.title} from the cart`, {
+      position: "bottom-right",
+    });
   }
 
   return (
@@ -20,10 +32,10 @@ export default function CartDetails({ onClose }) {
             Your Carts
           </h2>
           <div className="space-y-8 lg:space-y-12 max-h-[450px] overflow-auto mb-10 lg:mb-14">
-            {cartData.length === 0 ? (
+            {state.cartData.length === 0 ? (
               <h3>No movie chosen yet</h3>
             ) : (
-              cartData.map((item) => (
+              state.cartData.map((item) => (
                 <div className="grid grid-cols-[1fr_auto] gap-4" key={item.id}>
                   <div className="flex items-center gap-4">
                     <img
@@ -45,7 +57,7 @@ export default function CartDetails({ onClose }) {
                   <div className="flex justify-between gap-4 items-center">
                     <button
                       className="bg-[#D42967] rounded-md p-2 md:px-4 inline-flex items-center space-x-2 text-white"
-                      onClick={() => handleDelete(item.id)}
+                      onClick={() => handleDelete(item)}
                     >
                       <img className="w-5 h-5" src={deleteIcon} alt="" />
                       <span className="max-md:hidden">Remove</span>

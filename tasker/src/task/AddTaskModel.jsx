@@ -12,7 +12,7 @@ const AddTaskModel = ({ onSave, taskToUpdate, onCloseClick }) => {
     }
   );
 
-  const [isAdd, setIsAdd] = useState(Object.is(taskToUpdate, null));
+  const [isAdd] = useState(Object.is(taskToUpdate, null));
 
   function handleChange(event) {
     //notice one thing, in each input field the name of the input field is kept same as the corresponding key in the task object. The benefit can be seen in the code below, we don't have to reset all of the keys of the task object each time. Rather only change the key whose value is updated.

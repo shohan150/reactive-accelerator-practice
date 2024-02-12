@@ -11,6 +11,8 @@ node_modules
 dist
 dist-ssr
 *.local
+# but forbidden to add .env in gitignore file in asignment submission
+.env
 
 # Editor directories and files
 .vscode/*

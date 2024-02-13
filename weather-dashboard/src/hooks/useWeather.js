@@ -1,12 +1,12 @@
 //created using arrow function just for doing something different. no otherr reason.
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const useWeather = () => {
-  const [weatherData, useWeatherData] = useState({
+  const [weatherData, setWeatherData] = useState({
     location: "",
     climate: "",
-    temperatre: "",
+    temperature: "",
     maxTemperature: "",
     minTemperature: "",
     humidity: "",
@@ -31,20 +31,20 @@ const useWeather = () => {
       setLoading({
         //...loading,
         state: true,
-        message: "Fetching weather data",
+        message: "Fetching weather data...",
       });
       //now start fetching data
-      const responce = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid={API key}`
+      const response = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=8f45a053b8a04d70ca9a9c7f9f0b1fb0&units=metric`
       );
       //checl if data has been received
-      if (!responce.ok) {
-        const errorMessage = `Fetching weather data failed : ${responce.status}`;
+      if (!response.ok) {
+        const errorMessage = `Fetching weather data failed : ${response.status}`;
         throw new Error(errorMessage);
       }
 
       //if data received properly, work on the data
-      const data = await responce.json();
+      const data = await response.json();
       //Sticking to spread operator-based updates helps maintain immutability, predictability, and clarity in your code.
 
       //By using the spread operator (...) in your code, you ensure that a new object is created with the updated values, leaving the original object intact. React works best when you treat state as immutable. This means creating a new state object whenever you want to update it, rather than directly modifying the existing one (here by saying directly modifying it means loading.state = true. By directly modifying it does not mean setLoading({state:true, message: "text"}). this passing of new object will create new reference. But this is not recommened for several reasons mentioned below).
@@ -69,6 +69,8 @@ const useWeather = () => {
         longitude: longitude,
         latitude: latitude,
       };
+
+      setWeatherData(updateWeatherData);
     } catch (err) {
       setError(err);
     } finally {
@@ -79,4 +81,23 @@ const useWeather = () => {
       });
     }
   };
+
+  useEffect(() => {
+    setLoading({
+      //...loading,
+      state: true,
+      message: "Finding location",
+    });
+    navigator.geolocation.getCurrentPosition(function (position) {
+      fetchWeatherData(position.coords.latitude, position.coords.longitude);
+    });
+  }, []);
+
+  return {
+    weatherData,
+    error,
+    loading,
+  };
 };
+
+export default useWeather;

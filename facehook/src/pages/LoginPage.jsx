@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import authIllustration from "../assets/images/auth_illustration.png";
-import LoginForm from "../compoenents/auth/LoginForm";
+import LoginForm from "../components/auth/LoginForm";
 export default function LoginPage() {
   return (
     <main className="flex min-h-screen items-center justify-center bg-deepDark py-8">

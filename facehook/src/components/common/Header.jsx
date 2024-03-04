@@ -1,6 +1,5 @@
 import HomeIcon from "../../assets/icons/home.svg";
 import Notification from "../../assets/icons/notification.svg";
-import Avatar from "../../assets/images/avatars/avatar_1.png";
 import Logo from "../../assets/images/logo.svg";
 import Logout from "../auth/LogOut";
 
@@ -34,12 +33,14 @@ const Header = () => {
 
           <Link to="/me" className="flex-center !ml-8 gap-3">
             <span className="text-lg font-medium lg:text-xl">
-              {auth?.user?.firstName}
+              {auth?.user?.firstName} {auth?.user?.lastName}
             </span>
             <img
               className="max-h-[32px] max-w-[32px] lg:max-h-[44px] lg:max-w-[44px]"
-              src={Avatar}
-              alt="avatar"
+              src={`${import.meta.env.VITE_SERVER_BASE_URL}/${
+                auth?.user?.avatar
+              }`}
+              alt={auth?.user?.firstName}
             />
           </Link>
         </div>

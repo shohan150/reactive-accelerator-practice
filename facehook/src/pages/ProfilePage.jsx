@@ -9,6 +9,9 @@ import ProfileInfo from "../components/profile/ProfileInfo";
 
 const ProfilePage = () => {
   const { state, dispatch } = useProfile();
+
+  //main api http://localhost:3000. Ekhane amra hook use kore, checking por, hook theke return kora api ta use korchi. Tahole lav ki holo? Ekhn auth e notun/fresh/valid token ta ache. Ei valid token e server e request korar somoy pathano hobe.
+
   const { api } = useAxios();
   const { auth } = useAuth();
 

@@ -3,6 +3,8 @@ import { useEffect } from "react";
 import { api } from "../api";
 import { useAuth } from "./useAuth";
 
+//server jodi 401 error mane forbidden access er karone data na dei, tahole authToken expire hoye geche.  Tokhon refreshToken diye notun authToken request kore, shei notun authToken k setAut diye authContext er vitor auth state e notun authToken r refreshToken k store kore rakhi. Tahole ekhon amra http://localhost:3000 e directly CRUD call korbo na. borong ei useAut hook intercept korar por (by chacking if new authToken is required), j api ta return korche, seta use korbo application e.
+
 const useAxios = () => {
   const { auth, setAuth } = useAuth();
 

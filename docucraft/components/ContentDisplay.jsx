@@ -1,10 +1,11 @@
 import { getDocumentContent } from "@/lib/doc";
 import Link from "next/link";
 import Tag from "./Tag";
+
 const ContentDisplay = async ({id}) => {
   const documentContent = await getDocumentContent(id);
 
-  console.log(documentContent);
+  // console.log(documentContent);
 
   return (
     <article className="prose dark:prose-invert">
@@ -24,6 +25,8 @@ const ContentDisplay = async ({id}) => {
         {documentContent.tags &&
           documentContent.tags.map((tag) => <Tag key={tag} tag={tag} />)}
       </div>
+      
+      {/* show the converted html on ui. */}
       <div
         className="lead"
         dangerouslySetInnerHTML={{__html: documentContent.contentHtml}} />

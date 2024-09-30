@@ -1,9 +1,9 @@
-import { Inter } from "next/font/google";
-import "./globals.css";
 import Header from "@/components/Header";
-import { getDocuments } from "@/lib/doc";
-import { Suspense } from "react";
 import Loading from "@/components/Loading";
+import { getDocuments } from "@/lib/doc";
+import { Inter } from "next/font/google";
+import { Suspense } from "react";
+import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,7 +14,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
     const allDocuments = getDocuments();
-    console.log(allDocuments);
+    // console.log(allDocuments);
 
     return (
         <html lang="en">

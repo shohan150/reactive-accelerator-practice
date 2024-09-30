@@ -1,10 +1,10 @@
 'use client'
 
-import { useState, useEffect } from 'react'
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from 'react';
 
-import { getDocumentsByTag, getDocumentsByAuthor, getDocumentsByCategory } from "@/utils/doc-util";
+import { getDocumentsByAuthor, getDocumentsByCategory, getDocumentsByTag } from "@/utils/doc-util";
 
 
 const Sidebar = ({ docs }) => {
@@ -54,7 +54,7 @@ const Sidebar = ({ docs }) => {
 
         setRootNodes([...roots]);
         setNonRootNodesGrouped({...nonRoots});
-    }, [pathName])
+    }, [docs, pathName])
 
 
 

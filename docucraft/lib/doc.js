@@ -1,14 +1,16 @@
 import fs from "fs";
-import path from "path";
 import matter from "gray-matter";
+import path from "path";
 
 import { remark } from "remark";
 import html from "remark-html";
 
+/* defining the directory path where the
+documents are stored. */
 const postsDirectory = path.join(process.cwd(), "docs");
-
 export function getDocuments() {
-    console.log(postsDirectory);
+    // console.log(postsDirectory);
+    // log: D:\lws\reactive-accelerator\reactive-accelerator-practice\docucraft\docs
     const fileNames = fs.readdirSync(postsDirectory);
 
     const allDocumnets = fileNames.map((fileName) => {
@@ -16,9 +18,9 @@ export function getDocuments() {
 
         const fullPath = path.join(postsDirectory, fileName);
 
-        const fileContents = fs.readFileSync(fullPath, "utf8");
+        const fileContent = fs.readFileSync(fullPath, "utf8");
 
-        const matterResult = matter(fileContents);
+        const matterResult = matter(fileContent);
 
         return {
             id,
@@ -43,6 +45,7 @@ export async function getDocumentContent(id) {
 
     const matterResult = matter(fileContents);
 
+    //converts the content in .md files into html using reamrk package.
     const processedContent = await remark().use(html).process(matterResult.content);
 
     const contentHtml = processedContent.toString();

@@ -3,6 +3,7 @@ import TemperatureComponent from "@/components/TemperatureComponent";
 import NoLocationInfo from "@/components/NoLocationInfo";
 import { getResolvedLatLong } from "@/lib/location-info";
 
+//structure same as AQIComponent.
 const TemperaturePage = async ({
     params: { location },
     searchParams: { latitude, longitude },

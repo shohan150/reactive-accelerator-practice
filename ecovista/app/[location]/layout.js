@@ -1,14 +1,16 @@
-import Image from "next/image";
 import { Inter } from "next/font/google";
+import Image from "next/image";
 import "../globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
+//if you want you can declare metadata of each route.
 export const metadata = {
     title: "EcoVista",
     description: "One Place Dashboard for Eco Information",
 };
 
+// apply parallel routes here, on the layout.js file of "localhost:3000/[location]?lat= , lang= " route. means each component/route will act as indivudual pages on a single page. R parallel routes k prop hisebe pawa jai ebong shei k use korle e hoi. to j nam e parallel route gulo declare korechi shei nam ei props pacchi.
 export default function RootLayout({
     children,
     weather,

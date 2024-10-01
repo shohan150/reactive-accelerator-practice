@@ -8,6 +8,7 @@ export const metadata = {
     description: "One Place Dashboard for Eco Information",
 };
 
+//home er layout e bolte gele kichu e nai. page.js e location detecting hobe.
 export default function RootLayout({ children }) {
     return (
         <html lang="en">

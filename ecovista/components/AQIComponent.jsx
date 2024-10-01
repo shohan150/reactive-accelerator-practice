@@ -1,7 +1,8 @@
 import { getAQIData } from "@/lib/weather-info";
-import Card from "./Card";
 import Image from "next/image";
+import Card from "./Card";
 
+//show the air quality index data
 const AQIComponent = async ({ lat, lon }) => {
     const { main, components } = await getAQIData(lat, lon);
 

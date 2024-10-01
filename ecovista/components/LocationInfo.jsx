@@ -2,6 +2,7 @@ import { getLocationData } from "@/lib/location-info";
 import LocationSwitcher from "./LocationSwitcher";
 
 const LocationInfo = async ({ lat, lon }) => {
+    //sudhu lat and long dile e location er nam ber kore felbe. e.g: "http://localhost:3000/dummy?latitude=1.2&longitude=100" dile dekhba location dekhachhe indonesia. Evabe e j kono lat long dile e shei co-ordinates kon jaigar ta return korbe ei function. 
     const locationInfo = await getLocationData(lat, lon);
 
     return (

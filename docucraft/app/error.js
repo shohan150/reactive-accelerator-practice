@@ -8,6 +8,7 @@ export default function Error({ error, reset }) {
     console.error(error)
   }, [error])
 
+//  the error and reset props are automatically provided by Next.js when an error occurs in a route or component. You do not need to pass them manually. error Prop contains the error object that was thrown. It provides information about what went wrong, which you can use to display an error message or log the error.reset Prop is a function provided by Next.js that you can call to attempt to recover from the error. Typically, calling reset will re-render the component or page, allowing you to retry the operation that failed.
   return (
     <div>
       <h2>Something went wrong!</h2>

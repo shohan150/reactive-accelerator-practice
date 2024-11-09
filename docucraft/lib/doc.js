@@ -8,6 +8,8 @@ import html from "remark-html";
 /* defining the directory path where the
 documents are stored. */
 const postsDirectory = path.join(process.cwd(), "docs");
+
+// This function retrieves a list of documents from a specified directory. It uses the `readdirSync` function from the `fs` module to read the file names in the directory. Then, it maps over each file name, extracting the document ID by removing the `.md` extension. It reads the content of each file using `fs.readFileSync` and uses the `matter` function to parse the content as a matter document. Finally, it returns an array of objects containing the document ID and the parsed data, sorted by the `order` property.
 export function getDocuments() {
     // console.log(postsDirectory);
     // log: D:\lws\reactive-accelerator\reactive-accelerator-practice\docucraft\docs
@@ -39,6 +41,7 @@ export function getDocuments() {
     });
 }
 
+//This function retrieves the content of a Markdown (.md) file, converts it to HTML, and returns the HTML content along with the file's metadata. It uses the matter library to parse the file's metadata (e.g., title, date, author).It uses the remark library to convert the Markdown content to HTML. It returns an object containing the file's id, the converted HTML content, and the parsed metadata.
 export async function getDocumentContent(id) {
     const fullPath = path.join(postsDirectory, `${id}.md`);
     const fileContents = fs.readFileSync(fullPath, "utf8");

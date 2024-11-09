@@ -553,47 +553,12 @@
       "email": "salahuddin@email.com"
     },
     {
-      "id": "8fea109f-9c4a-45de-8b53-9b6a9a386e02",
-      "password": "$2b$08$usstcONuQ3QEytuzO8NQbe7hA3X4UMHfCdjfzRtiygzIe3exOuUWe",
-      "firstName": "Rambo",
-      "lastName": "Bony",
-      "avatar": "uploads/avatar/avatar-1708802845791-219561000.png",
-      "email": "rambo@email.com",
-      "bio": "I am Rambo!!!"
-    },
-    {
-      "id": "f695c209-276d-4143-8e2e-c64032550638",
-      "password": "$2b$08$qnIT3v2z3JtN4arP3n96LOLAj8tTe30Aa7XJPx1j9k..BWlvqWH1u",
+      "id": "e2ca53c3-e678-4cb5-89ef-5ce153651d37",
+      "password": "$2b$08$Rks1un/ruti5onve3Ux8L.wxEq/WYdlm9iLHHpzbW7ypqkOskpcce",
       "firstName": "shohan",
       "lastName": "123",
       "avatar": null,
-      "email": "shohan.ece17@gmail.com",
-      "bio": "another shohan is here. "
-    },
-    {
-      "id": "de8d7253-46f6-409a-b480-1c02f50b83c9",
-      "password": "$2b$08$hY07k7Vp.mp4jsYtDWe3cO7cfJwhFgI1PjCW26Xit0IOruml37/q6",
-      "firstName": "shohan",
-      "lastName": "1234",
-      "avatar": null,
-      "email": "shohan.ece171@gmail.com",
-      "bio": "hi. testing..."
-    },
-    {
-      "id": "67eccf78-ab50-43a6-9089-db1d62003348",
-      "password": "$2b$08$y1EuEUNop3krt8QOyY4jHuy78aV01I7vJWu2qAUsRPZZSx1BUcpH2",
-      "firstName": "Shohan",
-      "lastName": "Rahman",
-      "avatar": null,
-      "email": "shohan7035@gmail.com"
-    },
-    {
-      "id": "fd2ab5ff-db65-49fd-9b49-aeaf0465bec8",
-      "password": "$2b$08$/snENYRuSC7rVf8BxP0Kle7w/DlaOFj0/ZZ3Qt6IXL9lI4MZmD4H.",
-      "firstName": "shohan",
-      "lastName": "123",
-      "avatar": null,
-      "email": "shohan70351@gmail.com"
+      "email": "iamdummy37@gmail.com"
     }
   ]
 }

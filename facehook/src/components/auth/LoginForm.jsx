@@ -19,10 +19,11 @@ const LoginForm = () => {
   const submitForm = async (formData) => {
     try {
       const response = await axios.post(
-        `http://localhost:3000/auth/login`,
+        `${import.meta.env.VITE_SERVER_BASE_URL}/auth/login`,
         formData
       );
 
+      //if login is successful, get the user information and token (auth token and refresh token) from the responce. and rediect to the home page.
       if (response.status === 200) {
         const { token, user } = response.data;
         if (token) {
@@ -37,6 +38,7 @@ const LoginForm = () => {
       }
     } catch (error) {
       console.error(error);
+      //error hle react-hook-form ei error message set kori. r eta global error, ekhane form er jonno global; mane kono particular field er somossa na borong puro form er processing ei error hoyeche kono jaigai. sejinno root e random e message ta rakhlam with type "random" mentioned. 
       setError("root.random", {
         type: "random",
         message: `User with email ${formData.email} is not found`,

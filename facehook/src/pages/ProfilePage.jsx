@@ -10,7 +10,7 @@ import ProfileInfo from "../components/profile/ProfileInfo";
 const ProfilePage = () => {
   const { state, dispatch } = useProfile();
 
-  //main api http://localhost:3000. Ekhane amra hook use kore, checking por, hook theke return kora api ta use korchi. Tahole lav ki holo? Ekhn auth e notun/fresh/valid token ta ache. Ei valid token e server e request korar somoy pathano hobe.
+  //main api http://localhost:3000. Ekhane amra hook use kore, checking er por, hook theke return kora api ta use korchi. Tahole lav ki holo? Ei api diye request korle tar interceptor deya ache, to token k update kore valide token rakhbe auth e sobsomoy. emnoki header eo valid token rakbe. Ekhn auth e notun/fresh/valid token ta ache. Ei valid token e server e request korar somoy pathano hobe request header e.
 
   const { api } = useAxios();
   const { auth } = useAuth();

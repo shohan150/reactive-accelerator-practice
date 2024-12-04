@@ -2,7 +2,7 @@
 import Link from "next/link";
 
 const PhotoCard = ({ photo }) => {
-    console.log(photo);
+    // console.log(photo);
     
     return (
         <Link href={`photos/${photo.id}`} className="group">

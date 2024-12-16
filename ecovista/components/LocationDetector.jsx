@@ -5,6 +5,7 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 //jehetu amra native js er geolocation api use korchi, seta to browser er api. plus react er hooks o use korchi. sejonno etake client component hote hobe. ei project matro 2ta client component. ekta ei j browser e giye user er location detect kore r hook use kore. 2nd ta holo LocationSwitcher j amader save kora location er list dekhaiye tar modde theke j kono option pick koreoi location er route e niye jai. sekhane react hook useState r useEffect use kora hoyeche. r react er hook jehetu use hoyeche, tahole e take clinet component hote hobe. cause for now upto react18, only client side rendering is allowed. So, ekanto j minimal portion k client e render kora lagbe sudhu setuk kei client component banabo.
+
 const LocationDetector = () => {
     const [loading, setLoading] = useState(false);
 
@@ -16,6 +17,7 @@ const LocationDetector = () => {
     useEffect(() => {
         setLoading(true);
         //useSearchParams is react hook. sekhan theke pawa data diye native js diye new URLSearchParams baniye nilam.
+        
         const params = new URLSearchParams(searchParams);
 
         //jodi navigator.geolocation e apnar location dhorte pai tahole tar current position er latitude, longitude set kore dao params e r locationName detect na kore locationName = current dhore niye route er last e sob params k add kore j url hoi sekhane pathiye dao. porcessing hoye gele, next route e redirect korar age loading k false kore dao. 

@@ -39,13 +39,13 @@ export const getLocationLatLong = async (locationName) => {
 
 //resolve lat, long issue. if lat, long not provided, check if the let, lang is provided in out server, if provided retieve the lat, long. and return them.
 export const getResolvedLatLong = async (location, lat, lon) => {
-    console.log(location, lat, lon);
+    // console.log(location, lat, lon);
     if (lat && lon) {
         return { lat, lon };
     }
 
     const locationLatlong = await getLocationLatLong(location);
-    console.log(locationLatlong);
+    // console.log(locationLatlong);
 
     if (locationLatlong.latitude && locationLatlong.longitude) {
         const lat = locationLatlong.latitude;

@@ -1,4 +1,4 @@
-import mongoose, {Schema} from "mongoose";
+import mongoose, { Schema } from "mongoose";
 
 const schema = new Schema({
   name: {
@@ -23,5 +23,7 @@ const schema = new Schema({
   }
 });
 
-
+// events er moto e user er schema toiri kora holo.
 export const userModel = mongoose.models.users ?? mongoose.model("users", schema);
+
+// register/login er time e form field guloe name o ei schema er proti ta name er sathe match kore e rakha hoyeche. jate form submit korle, alada object e na rekhe directly ei schema hisebe formData peye jai. 

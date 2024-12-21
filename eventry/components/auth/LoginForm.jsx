@@ -1,11 +1,12 @@
 'use client'
 
-import { useState } from 'react';
 import { performLogin } from '@/app/actions';
+import { useState } from 'react';
 
 import { useAuth } from '@/app/hooks/useAuth';
 import { useRouter } from 'next/navigation';
 
+// login form is made client component just like that. No special reason. Registration form k server component kore server action diye korlo. R login form k client component baniye client theke server e request korlo. 2 ta process e dekhiye rakhlo r ki.
 const LoginForm = () => {
     const [error, setError] = useState("");
 
@@ -19,6 +20,7 @@ const LoginForm = () => {
             const found = await performLogin(formData)
 
             if (found) {
+                // if user is found, set the auth state and redirect to the home page.
                 setAuth(found);
                 router.push('/');
             } else {

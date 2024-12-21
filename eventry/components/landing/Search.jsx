@@ -1,12 +1,15 @@
 'use client'
-import { useSearchParams, usePathname, useRouter } from 'next/navigation';
 import useDebounce from '@/app/hooks/useDebounce';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 const Search = () => {
+  // to receive existing searchParams/Query (if any)
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
 
+
+  // serach box e kichu likhle e ei function e call hobe. Se URl er last e query ta add korbe.
   const doSearch = useDebounce((term) => {
     const params = new URLSearchParams(searchParams);
     if (term) {

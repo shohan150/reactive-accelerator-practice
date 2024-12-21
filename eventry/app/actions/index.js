@@ -1,11 +1,12 @@
 "use server";
 
-import { revalidatePath } from 'next/cache'
-import { createUser, findUserByCredentials, updateInterest, updateGoing, getEventById } from "@/db/queries";
+// this fileall server actions of the application.
+import { createUser, findUserByCredentials, getEventById, updateGoing, updateInterest } from "@/db/queries";
+import { revalidatePath } from 'next/cache';
 import { redirect } from "next/navigation";
 
-import { Resend } from 'resend';
 import EmailTemplate from '@/components/payments/EmailTemplate';
+import { Resend } from 'resend';
 
 async function registerUser(formData) {
     const user = Object.fromEntries(formData);
@@ -18,9 +19,11 @@ async function performLogin(formData) {
         const credential = {};
         credential.email = formData.get("email");
         credential.password = formData.get("password");
+        // now requuest to server for login. 
         const found = await findUserByCredentials(credential);
         return found;
     } catch (error) {
+        // if user not found, throw error from this performLogin function. And error is returned, update the UI on the receiving end.
         throw error;
     }
 }
@@ -31,6 +34,7 @@ async function addInterestedEvent(eventId, authId) {
     } catch(error) {
         throw error;
     }
+    // client e button click er jonno,server action er maddhome, server e is_interested k modify korar por, client side er cache clean kore feli revalidatePath function er maddhome. Tahole notun kore server e request kore updated data ta dekhabe.
     revalidatePath('/');
 }
 
@@ -64,4 +68,5 @@ async function sendEmail(eventId, user) {
 
 
 
-export { registerUser, performLogin, addInterestedEvent, addGoingEvent, sendEmail };
+export { addGoingEvent, addInterestedEvent, performLogin, registerUser, sendEmail };
+

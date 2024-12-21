@@ -15,6 +15,7 @@ import {
 async function getAllEvents(query) {
     let allEvents = [];
     if (query) {
+        // if query is provided, get the matching events. To search the matching events among all events on the database, we will need to use Regex. We create a regex from the query. Then, we use the regex to find the event names that match the query. On Regex creation, The second parameter "i" means case insensitive.
         const regex = new RegExp(query, "i");
         allEvents = await eventModel.find({ name: { $regex: regex } }).lean();
     } else {
@@ -45,6 +46,7 @@ async function findUserByCredentials(credentials) {
 }
 
 async function updateInterest(eventId, authId) {
+    // ekhane eventModel.findById(eventId).lean() korbo na. karon database theke data ene, abr shei data k modify kore database e  write korle, metada gulo lagbe. Karon event.save() jokhon call korbo tokhon, shei meta data niye e request ta perform hobe. Sejonno metadata k rakha lagbe ekahane.
     const event = await eventModel.findById(eventId);
 
     if (event) {

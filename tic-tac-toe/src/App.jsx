@@ -23,6 +23,7 @@ function Board({xIsNext, squares, onPlay}) {
 
 
     function handClick(i) {
+        // check if that sqaure is already filled. Or if there is a winner. Because, if winner is selected, we can't let user to play.
         if(squares[i] || calculateWinner(squares)) {
             return;
         }
@@ -59,16 +60,20 @@ function Board({xIsNext, squares, onPlay}) {
 }
 
 export default function Game() {
-    const [history, setHistory] = useState([Array(9).fill(null)]);
+    const [history, setHistory] = useState([Array(9).fill(null)]); // history is an array of arrays. Where each array is a board representing the board on each stage. Initially, the history array contains an array of 9 nulls because no moves have been made. As we progress with each move in the game, we add new arrays to the history array.
     const [xIsNext, setXIsNext] = useState(true);
-    const [currentMove, setCurrentMove] = useState(0);
+    const [currentMove, setCurrentMove] = useState(0); // determinces which array to pick from the history array. 
 
     const currentSquares = history[currentMove];
-
+    // console.log(history, currentSquares, currentMove);
+    
     function handlePlay(nextSquares) {
+        // debugger
         setXIsNext(!xIsNext);
+        // adds the new board state to history
         const nextHistory = [...history.slice(0, currentMove + 1), nextSquares]
         setHistory(nextHistory);
+        // make currentMove indicate the latest board state in history
         setCurrentMove(nextHistory.length -1);
     }
 
